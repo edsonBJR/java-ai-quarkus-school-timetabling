@@ -6,8 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.optaplanner.core.api.domain.entity.PlanningEntity;
+import org.optaplanner.core.api.domain.variable.PlanningVariable;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
+// Essa é entidade que será responsável pelo planejamento
+@PlanningEntity
 @Entity
 public class Lesson extends PanacheEntityBase {
 	
@@ -19,8 +24,18 @@ public class Lesson extends PanacheEntityBase {
 	private String teacher;	
 	private String studentGroup;
 	
+	// Aqui temos as variveis que serão alteradas no planejamento
+	// O optaplanner vai utilizar um range de id's da entidade timeslot
+	// para que ele mesmo consiga alocar uma aula em um determinado horário
+	@PlanningVariable(valueRangeProviderRefs = "timeslotRange")
 	@ManyToOne
 	private Timeslot timeslot;
+	
+	// Aqui temos as variaveis que serão alteradas referente
+	// a escolha da melhor sala de aula, atraves dos id's
+	// das salas de aula o Optaplanner irá escolher a ideal para
+	// cada aula
+	@PlanningVariable(valueRangeProviderRefs = "roomRange")
 	@ManyToOne
 	private Room room;
 	
@@ -51,9 +66,17 @@ public class Lesson extends PanacheEntityBase {
 	public Timeslot getTimeslot() {
 		return timeslot;
 	}
+	
+	public void setTimeslot(Timeslot timeslot) {
+		this.timeslot = timeslot;
+	}
 
 	public Room getRoom() {
 		return room;
+	}
+	
+	public void setRoom(Room room) {
+		this.room = room;
 	}
 	
 	@Override
