@@ -2,7 +2,7 @@
 <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>School timetabling - OptaPlanner Quarkus</title>
+    <title>Quadro de Horário Escolar - OptaPlanner Quarkus</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/webjars/font-awesome/css/all.css" />
 </head>
@@ -16,31 +16,31 @@
     <div class="sticky-top d-flex justify-content-center align-items-center" aria-live="polite" aria-atomic="true">
         <div id="notificationPanel" style="position: absolute; top: .5rem;"></div>
     </div>
-    <h1>High school time table solver</h1>
-    <p>Generate the optimal schedule for your teachers and students.</p>
+    <h1>Resolvedor de quadro de horários escolar</h1>
+    <p>Gerar uma tabela otimizada de horários escolar para professores e alunos</p>
 
     <div style="margin-bottom: .5rem">
         <button id="refreshButton" type="button" class="btn btn-secondary">
-            <span class="fas fa-refresh"></span> Refresh
+            <span class="fas fa-refresh"></span> Atualizar
         </button>
         <button id="solveButton" type="button" class="btn btn-success">
-            <span class="fas fa-play"></span> Solve
+            <span class="fas fa-play"></span> Resolver
         </button>
         <button id="stopSolvingButton" type="button" class="btn btn-danger">
-            <span class="fas fa-stop"></span> Stop solving
+            <span class="fas fa-stop"></span> Parar Resolução
         </button>
         <span id="score" class="score ml-2 align-middle font-weight-bold">Score: ?</span>
 
         <div class="float-right">
             <ul class="nav nav-pills" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="byRoomTab" data-toggle="tab" href="#byRoomPanel" role="tab" aria-controls="byRoomPanel" aria-selected="true">By room</a>
+                    <a class="nav-link active" id="byRoomTab" data-toggle="tab" href="#byRoomPanel" role="tab" aria-controls="byRoomPanel" aria-selected="true">Por Sala</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="byTeacherTab" data-toggle="tab" href="#byTeacher" role="tab" aria-controls="byTeacher" aria-selected="false">By teacher</a>
+                    <a class="nav-link" id="byTeacherTab" data-toggle="tab" href="#byTeacher" role="tab" aria-controls="byTeacher" aria-selected="false">Por Professor</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="byStudentGroupTab" data-toggle="tab" href="#byStudentGroup" role="tab" aria-controls="byStudentGroup" aria-selected="false">By student group</a>
+                    <a class="nav-link" id="byStudentGroupTab" data-toggle="tab" href="#byStudentGroup" role="tab" aria-controls="byStudentGroup" aria-selected="false">Por Série</a>
                 </li>
             </ul>
         </div>
@@ -64,17 +64,17 @@
     </div>
     <div>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lessonDialog">
-            <span class="fas fa-plus"></span> Add lesson
+            <span class="fas fa-plus"></span> Adicionar Aula
         </button>
         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#timeslotDialog">
-            <span class="fas fa-plus"></span> Add timeslot
+            <span class="fas fa-plus"></span> Adicionar Horário
         </button>
         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#roomDialog">
-            <span class="fas fa-plus"></span> Add room
+            <span class="fas fa-plus"></span> Adiconar Sala
         </button>
     </div>
 
-    <h2 style="margin-top: 2rem">Unassigned lessons</h2>
+    <h2 style="margin-top: 2rem">Aulas não atribuídas</h2>
     <div id="unassignedLessons" class="card-columns"></div>
 </div>
 
@@ -83,27 +83,27 @@
     <div class="modal-dialog" role="dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4>Add a lesson</h4>
+                <h4>Adicionar Matéria</h4>
                 <button type="button" class="close" data-dismiss="modal">
                     <span>&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="lesson_subject">Subject</label>
+                    <label for="lesson_subject">Matéria</label>
                     <input type="text" class="form-control" id="lesson_subject" required value="Music">
                 </div>
                 <div class="form-group">
-                    <label for="lesson_teacher">Teacher</label>
+                    <label for="lesson_teacher">Professor</label>
                     <input type="text" class="form-control" id="lesson_teacher" required value="B. May">
                 </div>
                 <div class="form-group">
-                    <label for="lesson_studentGroup">Student group</label>
+                    <label for="lesson_studentGroup">Série</label>
                     <input type="text" class="form-control" id="lesson_studentGroup" required value="11th grade">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="addLessonSubmitButton">Submit new lesson</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="addLessonSubmitButton">Enviar Nova Matéria</button>
                 </div>
             </div>
         </div>
@@ -113,35 +113,35 @@
     <div class="modal-dialog" role="dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4>Add a timeslot</h4>
+                <h4>Adicionar Horário</h4>
                 <button type="button" class="close" data-dismiss="modal">
                     <span>&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="timeslot_dayOfWeek">Day of week</label>
+                    <label for="timeslot_dayOfWeek">Dia da Semana</label>
                     <select class="form-control" id="timeslot_dayOfWeek" required>
-                        <option>Monday</option>
-                        <option>Tuesday</option>
-                        <option selected="selected">Wednesday</option>
-                        <option>Thursday</option>
-                        <option>Friday</option>
-                        <option>Saturday</option>
-                        <option>Sunday</option>
+                        <option>Segunda</option>
+                        <option>Terça</option>
+                        <option selected="selected">Quarta</option>
+                        <option>Quinta</option>
+                        <option>Sexta</option>
+                        <option>Sábado</option>
+                        <option>Domingo</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="timeslot_startTime">Start time</label>
+                    <label for="timeslot_startTime">Hora de Início</label>
                     <input type="time" class="form-control" id="timeslot_startTime" required value="08:30"/>
                 </div>
                 <div class="form-group">
-                    <label for="timeslot_endTime">End time</label>
+                    <label for="timeslot_endTime">Hora de Fim</label>
                     <input type="time" class="form-control" id="timeslot_endTime" required value="09:30">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="addTimeslotSubmitButton">Submit new timeslot</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="addTimeslotSubmitButton">Enviar Novo Horário</button>
                 </div>
             </div>
         </div>
@@ -151,19 +151,19 @@
     <div class="modal-dialog" role="dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4>Add a room</h4>
+                <h4>Adicionar Sala</h4>
                 <button type="button" class="close" data-dismiss="modal">
                     <span>&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="room_name">Name</label>
+                    <label for="room_name">Nome</label>
                     <input type="text" class="form-control" id="room_name" required value="Room D">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="addRoomSubmitButton">Submit new room</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="addRoomSubmitButton">Enviar Nova Sala</button>
                 </div>
             </div>
         </div>
