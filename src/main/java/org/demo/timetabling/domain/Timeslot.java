@@ -3,21 +3,31 @@ package org.demo.timetabling.domain;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
-public class Timeslot {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+
+@Entity
+public class Timeslot extends PanacheEntityBase {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	private DayOfWeek dayOfWeek;
 	
 	private LocalTime startTime;
-	private LocalTime entTime;
+	private LocalTime endTime;
 	
 	public Timeslot() {}
 
-	public Timeslot(DayOfWeek dayOfWeek, LocalTime startTime, LocalTime entTime) {
+	public Timeslot(DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime) {
 		this.dayOfWeek = dayOfWeek;
 		this.startTime = startTime;
-		this.entTime = entTime;
+		this.endTime = endTime;
 	}
 
 	public Long getId() {
@@ -32,8 +42,8 @@ public class Timeslot {
 		return startTime;
 	}
 
-	public LocalTime getEntTime() {
-		return entTime;
+	public LocalTime getEndTime() {
+		return endTime;
 	}
 	
 	@Override

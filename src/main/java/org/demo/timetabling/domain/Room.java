@@ -1,7 +1,17 @@
 package org.demo.timetabling.domain;
 
-public class Room {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+
+@Entity
+public class Room extends PanacheEntityBase {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	private String name;
