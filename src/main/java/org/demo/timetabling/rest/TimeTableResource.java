@@ -13,7 +13,10 @@ import org.demo.timetabling.domain.Lesson;
 import org.demo.timetabling.domain.Room;
 import org.demo.timetabling.domain.TimeTable;
 import org.demo.timetabling.domain.Timeslot;
+import org.optaplanner.core.api.score.ScoreManager;
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 import org.optaplanner.core.api.solver.SolverManager;
+import org.optaplanner.core.api.solver.SolverStatus;
 
 @Path("/timeTable")
 @Produces(MediaType.APPLICATION_JSON)
@@ -23,10 +26,16 @@ public class TimeTableResource {
 	private static final long SINGLETON_TIME_TABLE_ID = 1L;
 	@Inject
 	SolverManager<TimeTable, Long> solverManager;
+    @Inject
+    ScoreManager<TimeTable, HardSoftScore> scoreManager;
 	
 	@GET
 	public TimeTable getTimeTable() {
-		return findById(SINGLETON_TIME_TABLE_ID);
+		SolverStatus solverStatus = solverManager.getSolverStatus(SINGLETON_TIME_TABLE_ID);
+		TimeTable timeTable = findById(SINGLETON_TIME_TABLE_ID);
+		scoreManager.updateScore(timeTable);
+		timeTable.setSolverStatus(solverStatus);
+		return timeTable;
 	}
 	
 	@POST

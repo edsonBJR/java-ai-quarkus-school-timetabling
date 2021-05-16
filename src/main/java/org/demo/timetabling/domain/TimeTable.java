@@ -8,6 +8,7 @@ import org.optaplanner.core.api.domain.solution.PlanningSolution;
 import org.optaplanner.core.api.domain.solution.ProblemFactCollectionProperty;
 import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
+import org.optaplanner.core.api.solver.SolverStatus;
 
 // Aqui temos a classe que será responsável por criar a solução
 // nela vamos ter as listas de horario e de salas de aulas 
@@ -38,6 +39,8 @@ public class TimeTable {
 	@PlanningScore
 	private HardSoftScore score;
 	
+	private SolverStatus solverStatus;
+	
 	public TimeTable() {}
 
 	public TimeTable(List<Timeslot> timeslotList, List<Room> roomList, List<Lesson> lessonList) {
@@ -56,6 +59,22 @@ public class TimeTable {
 
 	public List<Lesson> getLessonList() {
 		return lessonList;
+	}
+
+	public SolverStatus getSolverStatus() {
+		return solverStatus;
+	}
+
+	public void setSolverStatus(SolverStatus solverStatus) {
+		this.solverStatus = solverStatus;
+	}
+
+	public HardSoftScore getScore() {
+		return score;
+	}
+
+	public void setScore(HardSoftScore score) {
+		this.score = score;
 	}
 	
 }
