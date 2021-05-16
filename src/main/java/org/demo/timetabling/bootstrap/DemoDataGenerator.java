@@ -35,33 +35,33 @@ public class DemoDataGenerator {
 		Timeslot.persist(timeslotList);
 		
         List<Room> roomList = new ArrayList<>();
-        roomList.add(new Room("Sala A"));
-        roomList.add(new Room("Sala B"));
-        roomList.add(new Room("Sala C"));
+        roomList.add(new Room("Room A"));
+        roomList.add(new Room("Room B"));
+        roomList.add(new Room("Room C"));
 		Room.persist(roomList);
 		
         List<Lesson> lessonList = new ArrayList<>();
-        lessonList.add(new Lesson("Matemática", "A. Turing", "9° - Série"));
-        lessonList.add(new Lesson("Matemática", "A. Turing", "9° - Série"));
-        lessonList.add(new Lesson("Física", "M. Curie", "9° - Série"));
-        lessonList.add(new Lesson("Química", "M. Curie", "9° - Série"));
-        lessonList.add(new Lesson("Biologia", "C. Darwin", "9° - Série"));
-        lessonList.add(new Lesson("História", "I. Jones", "9° - Série"));
-        lessonList.add(new Lesson("Inglês", "I. Jones", "9° - Série"));
-        lessonList.add(new Lesson("Inglês", "I. Jones", "9° - Série"));
-        lessonList.add(new Lesson("Espanhol", "P. Cruz", "9° - Série"));
-        lessonList.add(new Lesson("Espanhol", "P. Cruz", "9° - Série"));
+        lessonList.add(new Lesson("Math", "A. Turing", "9th grade"));
+        lessonList.add(new Lesson("Math", "A. Turing", "9th grade"));
+        lessonList.add(new Lesson("Physics", "M. Curie", "9th grade"));
+        lessonList.add(new Lesson("Chemistry", "M. Curie", "9th grade"));
+        lessonList.add(new Lesson("Biology", "C. Darwin", "9th grade"));
+        lessonList.add(new Lesson("History", "I. Jones", "9th grade"));
+        lessonList.add(new Lesson("English", "I. Jones", "9th grade"));
+        lessonList.add(new Lesson("English", "I. Jones", "9th grade"));
+        lessonList.add(new Lesson("Spanish", "P. Cruz", "9th grade"));
+        lessonList.add(new Lesson("Spanish", "P. Cruz", "9th grade"));
         
-        lessonList.add(new Lesson("Matemática", "A. Turing", "10° - Série"));
-        lessonList.add(new Lesson("Matemática", "A. Turing", "10° - Série"));
-        lessonList.add(new Lesson("Matemática", "A. Turing", "10° - Série"));
-        lessonList.add(new Lesson("Física", "M. Curie", "10° - Série"));
-        lessonList.add(new Lesson("Química", "M. Curie", "10° - Série"));
-        lessonList.add(new Lesson("Francês", "M. Curie", "10° - Série"));
-        lessonList.add(new Lesson("Geografia", "C. Darwin", "10° - Série"));
-        lessonList.add(new Lesson("História", "I. Jones", "10° - Série"));
-        lessonList.add(new Lesson("Inglês", "P. Cruz", "10° - Série"));
-        lessonList.add(new Lesson("Espanhol", "P. Cruz", "10° - Série"));
+        lessonList.add(new Lesson("Math", "A. Turing", "10th grade"));
+        lessonList.add(new Lesson("Math", "A. Turing", "10th grade"));
+        lessonList.add(new Lesson("Math", "A. Turing", "10th grade"));
+        lessonList.add(new Lesson("Physics", "M. Curie", "10th grade"));
+        lessonList.add(new Lesson("Chemistry", "M. Curie", "10th grade"));
+        lessonList.add(new Lesson("French", "M. Curie", "10th grade"));
+        lessonList.add(new Lesson("Geography", "C. Darwin", "10th grade"));
+        lessonList.add(new Lesson("History", "I. Jones", "10th grade"));
+        lessonList.add(new Lesson("English", "P. Cruz", "10th grade"));
+        lessonList.add(new Lesson("Spanish", "P. Cruz", "10th grade"));
 		Lesson.persist(lessonList);
 	}
 }
