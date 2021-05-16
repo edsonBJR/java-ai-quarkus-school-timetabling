@@ -1,9 +1,5 @@
 package org.demo.timetabling.rest;
 
-import java.time.DayOfWeek;
-import java.time.LocalTime;
-import java.util.Collections;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
